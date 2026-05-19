@@ -1,0 +1,26 @@
+# Core
+torch>=2.2.0
+torchvision>=0.17.0
+numpy>=1.24
+pandas>=2.0
+Pillow>=10.0
+tqdm
+
+# NLP / metrics
+nltk
+
+# Visualisation
+matplotlib>=3.7
+seaborn
+wordcloud
+opencv-python-headless
+
+# Demo
+streamlit>=1.35
+requests
+
+# Data
+kaggle
+
+# Logging (optional)
+wandb
