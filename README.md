@@ -9,7 +9,7 @@
 | **Decoder** | GRU-Attn and LSTM-Attn · 8-head cross-attention |
 | **Embeddings** | GloVe 6B 300d → Linear(300→512) · min freq=3 · trainable |
 | **Loss** | CrossEntropy + label smoothing ε=0.1 · teacher forcing |
-| **Dataset** | MS-COCO train2017 · 118k images · 80/10/10 split by image |
+| **Dataset** | MS-COCO train2017 · 118k images · 90/5/5 split by image |
 | **Hardware** | Lightning AI H100 80GB |
 
 ## Training strategy
@@ -18,7 +18,7 @@
 Phase 1 (15 epochs, batch=2048)
   └─ EfficientNetV2-S fully frozen
   └─ Features extracted once → cached to disk (~17 GB float16)
-  └─ Decoder trains on cached features (very fast, ~30s/epoch)
+  └─ Decoder trains on cached features
 
 Phase 2 (10 epochs, batch=512)
   └─ Load Phase-1 checkpoint
@@ -92,3 +92,7 @@ pip install --index-url https://download.pytorch.org/whl/cu121 torch torchvision
   the last EfficientNetV2-S conv block's activation map.
 - **All-heads view** — each of 8 attention heads shown separately,
   revealing different spatial focuses (objects, relations, textures).
+
+## Demo
+
+https://imagecaptioning-enhanced-hd3epvage6odrfej7bp6yn.streamlit.app/
